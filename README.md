@@ -39,6 +39,20 @@ yarn build:browser
 This will create a file called `lib/browser.js` which can be included in your project.
 See `example/vanilla-example/index.html` for a basic integration example.
 
+#### Cipher base fix
+
+You may encounter an error building to the browser due to cipher-base. Open this file:
+`node_modules/cipher-base/index.js`
+
+And replace the imports with the following:
+
+```
+var Buffer = require('safe-buffer').Buffer
+var Transform = require('readable-stream').Transform // replacing instead of "stream"
+var StringDecoder = require('string_decoder').StringDecoder
+var inherits = require('inherits')
+```
+
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](issues).
