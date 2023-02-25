@@ -1,4 +1,7 @@
-### Open the directory and run the script line:
+# RBX JS SDK
+
+This SDK allows for integrating with the RBX platform through javascript & typescript via node or a browser.
+Although yarn is used here, npm can be use instead. Simply replace `yarn build:node` with `npm run build:node` as an example.
 
 #### Install Packages
 
@@ -39,6 +42,8 @@ yarn build:browser
 This will create a file called `lib/browser.js` which can be included in your project.
 See `example/vanilla-example/index.html` for a basic integration example.
 
+> Note: this command will also copy the file to the example folder.
+
 #### Cipher base fix
 
 You may encounter an error building to the browser due to cipher-base. Open this file:
@@ -52,6 +57,8 @@ var Transform = require('readable-stream').Transform // replacing instead of "st
 var StringDecoder = require('string_decoder').StringDecoder
 var inherits = require('inherits')
 ```
+
+> Note: this is automated by the postinstall script but it may be something you run into.
 
 ## 🤝 Contributing
 
