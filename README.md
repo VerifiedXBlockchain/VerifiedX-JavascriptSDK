@@ -45,7 +45,7 @@ yarn build:browser
 ```
 
 This will create a file called `lib/browser.js` which can be included in your project.
-See `example/vanilla-example/index.html` for a basic integration example.
+See `example/browser-example/index.html` for a basic integration example.
 
 > Note: this command will also copy the file to the example folder.
 
@@ -76,7 +76,7 @@ EXPLORER_ADDRESS="http://localhost:3001/https://data.rbx.network/api"
 
 ##### Running
 
-You can simply launch the file `example/vanialla-example/index.html` in your browser (no web server required!)
+You can simply launch the file `example/browser-example/index.html` in your browser (no web server required!)
 Of course, feel free to use http-server or whatever you like.
 
 #### Cipher base fix
