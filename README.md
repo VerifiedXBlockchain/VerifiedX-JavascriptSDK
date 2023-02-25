@@ -8,7 +8,7 @@ yarn
 
 #### Testing
 
-Create a test.env file in the root directory and include the following entries:
+Create a `test.env` file in the root directory and include the following entries:
 
 ```bash
 PRIVATE_KEY=""
@@ -24,17 +24,20 @@ Then run:
 yarn test
 ```
 
-#### build node
+#### build for node
 
 ```bash
 yarn build:node
 ```
 
-#### build browser
+#### build for browser
 
 ```bash
 yarn build:browser
 ```
+
+This will create a file called `lib/browser.js` which can be included in your project.
+See `example/vanilla-example/index.html` for a basic integration example.
 
 ## 🤝 Contributing
 
