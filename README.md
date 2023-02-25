@@ -21,6 +21,8 @@ TO_ADDRESS=""
 WALLET_ADDRESS=""
 ```
 
+> Note: keys can be generated without a wallet. To broadcast transactions, you must have a wallet running. It does not need to have any keys/balance associated with it (and shouldn't for security purposes) but needs to be syned to block height in order to validate transactions correctly. It is recommended you proxy this wallet with a server in the middle.
+
 Then run:
 
 ```bash

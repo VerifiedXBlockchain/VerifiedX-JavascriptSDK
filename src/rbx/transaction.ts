@@ -54,7 +54,6 @@ class WalletService {
         const response = await fetch(url, { headers: { 'Content-Type': 'application/json' } });
         const body = await response.text();
         return JSON.parse(body);
-
     }
 
     private async postJson(path: string, payload = {}): Promise<any> {

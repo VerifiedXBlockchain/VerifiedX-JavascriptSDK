@@ -1,4 +1,4 @@
-import { KeypairService, TransactionService } from '../index';
+import { ExplorerService, KeypairService, TransactionService } from '../index';
 import { TxOptions, TxType } from '../rbx/transaction';
 import { isValidAddress, isValidPrivateKey } from '../rbx/utils';
 import CryptoJS from 'crypto-js';
@@ -184,6 +184,41 @@ describe('transaction checks', () => {
   test("send transaction", async () => {
     const transactionHash = txService.buildAndSendTransaction(txOptions, PRIVATE_KEY, true);
     expect(transactionHash).toBeTruthy();
+  })
+
+});
+
+describe('explorer checks', () => {
+
+  let explorerService: ExplorerService;
+
+  beforeAll(() => {
+    jest.setTimeout(10000);
+    explorerService = new ExplorerService();
+  });
+
+
+  test("latest block", async () => {
+    const block = await explorerService.latestBlock();
+    expect(block).toBeTruthy();
+    expect(block.height).toBeGreaterThan(703789);
+  })
+
+  test("5 blocks", async () => {
+    const response = await explorerService.blocks(5);
+    expect(response.results.length).toBe(5);
+  })
+
+
+  test("address", async () => {
+    const address = await explorerService.getAddress(process.env.FROM_ADDRESS || "");
+    expect(address).toBeTruthy();
+  })
+
+
+  test("balance", async () => {
+    const balance = await explorerService.getBalance(process.env.FROM_ADDRESS || "");
+    expect(balance).toBeGreaterThan(0);
   })
 
 });
