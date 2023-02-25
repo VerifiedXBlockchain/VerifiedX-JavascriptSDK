@@ -26,6 +26,13 @@ jobs:
 
       - name: Run the tests
         run: npm test -- --coverage
+        env:
+          PRIVATE_KEY: ${{secrets.PRIVATE_KEY}}
+          PUBLIC_KEY: ${{secrets.PUBLIC_KEY}}
+          FROM_ADDRESS: ${{secrets.FROM_ADDRESS}}
+          TO_ADDRESS: ${{secrets.TO_ADDRESS}}
+          WALLET_ADDRESS: ${{secrets.WALLET_ADDRESS}}
+
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
       - name: Upload coverage to Codecov
