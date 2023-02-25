@@ -194,7 +194,7 @@ describe('explorer checks', () => {
 
   beforeAll(() => {
     jest.setTimeout(10000);
-    explorerService = new ExplorerService();
+    explorerService = new ExplorerService(process.env.EXPLORER_ADDRESS || "https://data.rbx.network/api");
   });
 
 
@@ -209,12 +209,10 @@ describe('explorer checks', () => {
     expect(response.results.length).toBe(5);
   })
 
-
   test("address", async () => {
     const address = await explorerService.getAddress(process.env.FROM_ADDRESS || "");
     expect(address).toBeTruthy();
   })
-
 
   test("balance", async () => {
     const balance = await explorerService.getBalance(process.env.FROM_ADDRESS || "");

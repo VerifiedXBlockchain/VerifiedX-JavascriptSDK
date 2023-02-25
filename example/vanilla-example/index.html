@@ -9,6 +9,8 @@
     <script src="./rbx.js"></script>
 </head>
 <body>
+
+    <h2>Keypairs</h2>
     
     <textarea id="result" rows="10" cols="60"></textarea>
     <br />
@@ -24,6 +26,8 @@
 
     <hr />
 
+    <h2>Transactions</h2>
+
     <input type="text" id="fromAddress" placeholder="From Address" value="" />
     <input type="text" id="toAddress" placeholder="To Address" value="" />
     <input type="text" id="txPrivateKey" placeholder="Private Key"value="" />
@@ -32,13 +36,19 @@
 
     <button onClick="sendTestTx()">Send Test TX</button>
 
+    <h2>Explorer</h2>
+
+    <button onClick="getBlockHeight()">Latest Block Height</button>
+
     
 </body>
 
 <script>
 
     const keypairService = new rbx.KeypairService();
-    const txService = new rbx.TransactionService("localhost", 7292, false);
+    const txService = new rbx.TransactionService("http://localhost:3001/http://127.0.0.1:7292");
+    const explorerService = new rbx.ExplorerService("http://localhost:3001/https://data.rbx.network/api");
+
 
     function generateAddress() {
         
@@ -75,6 +85,12 @@
         txService.buildAndSendTransaction(options, privateKey, true).then(function(hash){
             alert("Success. Hash:" + hash);
         });
+    }
+
+    function getBlockHeight() {
+        explorerService.latestBlock().then(function(block) {
+            alert(block.height);
+        })
     }
 
 

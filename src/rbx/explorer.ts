@@ -8,8 +8,10 @@ import { PaginatedResponse } from "./types/paginated-response";
 
 class ExplorerService {
 
-    private get baseUrl() {
-        return 'https://data.rbx.network/api';
+    baseUrl: string;
+
+    constructor(baseUrl: string) {
+        this.baseUrl = baseUrl;
     }
 
     private async getJson(path: string): Promise<any> {
