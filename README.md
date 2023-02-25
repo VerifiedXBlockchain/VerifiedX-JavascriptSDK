@@ -79,6 +79,21 @@ EXPLORER_ADDRESS="http://localhost:3001/https://data.rbx.network/api"
 You can simply launch the file `example/browser-example/index.html` in your browser (no web server required!)
 Of course, feel free to use http-server or whatever you like.
 
+#### NodeJS Example
+
+See the folder `example/node-example` for a basic overview of how to integrate with this package.
+
+```
+cd example/node-example
+yarn
+yarn build
+yarn start
+```
+
+Then head to `http://localhost:8080` in your browser.
+
+> This is built in express with typescript but you can just use regular javascript. Express is also not required, it's just an easy way to showcase the functionality.
+
 #### Cipher base fix
 
 You may encounter an error building to the browser due to cipher-base. Open this file:
