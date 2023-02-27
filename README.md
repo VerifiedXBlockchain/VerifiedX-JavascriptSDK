@@ -3,6 +3,12 @@
 This SDK allows for integrating with the RBX platform through javascript & typescript via node or a browser.
 Although yarn is used here, npm can be use instead. Simply replace `yarn build:node` with `npm run build:node` as an example.
 
+### Using
+
+```
+yarn add rbx-js-sdk #or npm install rbx-js-sdk --save
+```
+
 #### Install Packages
 
 ```bash
