@@ -19,9 +19,7 @@
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags",
-    "postinstall": "yarn fix:cipher",
-    "fix:cipher": "cp ./resources/cipher-fix.js ./node_modules/cipher-base/index.js"
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
