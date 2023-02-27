@@ -116,7 +116,17 @@ var inherits = require('inherits')
 
 ```
 
-> Note: this is automated by the postinstall script but it may be something you run into.
+> Note: this is automated by the postinstall script when building from source but it may be something you run into.
+
+If you are using this package via npm, you will need to do this manually (only required for browser though).
+Add these two lines to your `scripts` section of your package.json:
+
+```
+    "postinstall": "yarn fix:cipher",
+    "fix:cipher": "cp ./node_modules/rbx-js-sdk/lib/cipher-fix.js ./node_modules/cipher-base/index.js"
+```
+
+
 
 ## 🤝 Contributing
 
