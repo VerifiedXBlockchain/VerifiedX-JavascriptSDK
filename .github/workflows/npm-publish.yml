@@ -12,7 +12,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18.13.0
-      - run: npm i
+          npm-version: 8.19.3
+      - run: npm i --ignore-engines
       - run: npm test
 
   publish-npm:
@@ -23,8 +24,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18.13.0
+          npm-version: 8.19.3
           registry-url: https://registry.npmjs.org/
-      - run: npm i
+      - run: npm i --ignore-engines
       - run: npm run build
       - run: npm publish
         env:
