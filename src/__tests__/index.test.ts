@@ -193,7 +193,7 @@ describe('explorer checks', () => {
   let explorerService: ExplorerService;
 
   beforeAll(() => {
-    jest.setTimeout(10000);
+    jest.setTimeout(30000);
     explorerService = new ExplorerService(process.env.EXPLORER_ADDRESS || "https://data.rbx.network/api");
   });
 
