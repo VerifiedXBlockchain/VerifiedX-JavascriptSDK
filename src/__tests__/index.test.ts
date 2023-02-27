@@ -143,7 +143,6 @@ describe('transaction checks', () => {
   let txOptions: TxOptions;
 
   beforeAll(() => {
-    jest.setTimeout(30000);
 
     txService = new TransactionService(process.env.WALLET_ADDRESS || "");
     PRIVATE_KEY = process.env.PRIVATE_KEY || "";
@@ -159,7 +158,7 @@ describe('transaction checks', () => {
   test("transaction", async () => {
     const t = await txService.buildTransaction(txOptions);
     expect(t).toBeTruthy();
-  })
+  }, 30000)
 
   test("sign and send transaction", async () => {
 
@@ -179,12 +178,12 @@ describe('transaction checks', () => {
     const testTxHash = await txService.broadcastTransaction(t, true);
     expect(testTxHash).toBeTruthy();
 
-  })
+  }, 30000)
 
   test("send transaction", async () => {
     const transactionHash = txService.buildAndSendTransaction(txOptions, PRIVATE_KEY, true);
     expect(transactionHash).toBeTruthy();
-  })
+  }, 30000)
 
 });
 
@@ -198,33 +197,29 @@ describe('explorer checks', () => {
 
 
   test("latest block", async () => {
-    jest.setTimeout(30000);
 
     const block = await explorerService.latestBlock();
     expect(block).toBeTruthy();
     expect(block.height).toBeGreaterThan(703789);
-  })
+  }, 30000)
 
   test("5 blocks", async () => {
-    jest.setTimeout(30000);
 
     const response = await explorerService.blocks(5);
     expect(response.results.length).toBe(5);
-  })
+  }, 30000)
 
   test("address", async () => {
-    jest.setTimeout(30000);
 
     const address = await explorerService.getAddress(process.env.FROM_ADDRESS || "");
     expect(address).toBeTruthy();
-  })
+  }, 30000)
 
   test("balance", async () => {
-    jest.setTimeout(30000);
 
     const balance = await explorerService.getBalance(process.env.FROM_ADDRESS || "");
     expect(balance).toBeGreaterThan(0);
-  })
+  }, 30000)
 
 });
 
