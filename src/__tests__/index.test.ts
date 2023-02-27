@@ -195,7 +195,6 @@ describe('explorer checks', () => {
     explorerService = new ExplorerService(process.env.EXPLORER_ADDRESS || "https://data.rbx.network/api");
   });
 
-
   test("latest block", async () => {
 
     const block = await explorerService.latestBlock();
