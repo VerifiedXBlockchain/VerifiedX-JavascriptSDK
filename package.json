@@ -16,7 +16,7 @@
     "lint:fix": "eslint src --fix --ext .js,.ts",
     "test": "jest --config jest.config.js --silent='false'",
     "prepare": "npm run build",
-    "prepublishOnly": "cp ./resources/cipher-fix.js ./lib/cipher-fix.js",
+    "prepublishOnly": "npm test && npm run lint && cp ./resources/cipher-fix.js ./lib/cipher-fix.js",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
