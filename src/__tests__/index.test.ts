@@ -193,28 +193,35 @@ describe('explorer checks', () => {
   let explorerService: ExplorerService;
 
   beforeAll(() => {
-    jest.setTimeout(30000);
     explorerService = new ExplorerService(process.env.EXPLORER_ADDRESS || "https://data.rbx.network/api");
   });
 
 
   test("latest block", async () => {
+    jest.setTimeout(30000);
+
     const block = await explorerService.latestBlock();
     expect(block).toBeTruthy();
     expect(block.height).toBeGreaterThan(703789);
   })
 
   test("5 blocks", async () => {
+    jest.setTimeout(30000);
+
     const response = await explorerService.blocks(5);
     expect(response.results.length).toBe(5);
   })
 
   test("address", async () => {
+    jest.setTimeout(30000);
+
     const address = await explorerService.getAddress(process.env.FROM_ADDRESS || "");
     expect(address).toBeTruthy();
   })
 
   test("balance", async () => {
+    jest.setTimeout(30000);
+
     const balance = await explorerService.getBalance(process.env.FROM_ADDRESS || "");
     expect(balance).toBeGreaterThan(0);
   })
