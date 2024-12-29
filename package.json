@@ -10,7 +10,7 @@
     "build:node": "tsc -p tsconfig.json",
     "build:browser": "./node_modules/.bin/esbuild src/browser.ts --bundle --sourcemap=external --outfile=lib/esbuild/browser.js && browserify lib/esbuild/browser.js > ./lib/browser.js && yarn examples && yarn cleanup",
     "examples": "cp ./lib/browser.js ./example/browser-example/rbx.js",
-    "cleanup": "rm -rf lib/esbuild",
+    "cleanup": "rm -rf lib/esbuild && cp lib/index.d.ts lib/browser.d.ts",
     "format": "prettier --write \"src/**/*.(js|ts)\"",
     "lint": "eslint src --ext .js,.ts",
     "lint:fix": "eslint src --fix --ext .js,.ts",

@@ -21,7 +21,7 @@ const options = program.opts();
 
 const explorerService = new ExplorerService('https://data.rbx.network/api');
 const keypairService = new KeypairService();
-const transactionService = new TransactionService("http://localhost:7292");
+const transactionService = new TransactionService("http://68.183.17.190:7292");
 
 
 const init = async () => {
