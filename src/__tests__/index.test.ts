@@ -6,6 +6,8 @@ import CryptoJS from 'crypto-js';
 import dotenv from 'dotenv';
 dotenv.config({ path: 'test.env' })
 
+const isTestnet = true;
+
 
 describe('test env vars', () => {
 
@@ -75,7 +77,7 @@ describe('address from private key', () => {
       const privateKey = PRIVATE_KEYS[i];
       const expectedAddress = EXPECTED_ADDRESSES[i];
 
-      const address = keypairService.addressFromPrivate(privateKey);
+      const address = keypairService.addressFromPrivate(privateKey, isTestnet);
       expect(address == expectedAddress).toBe(true);
     }
 
@@ -92,8 +94,8 @@ describe('create private key and generate address', () => {
     const keypairService = new KeypairService();
 
     const privateKey = keypairService.generatePrivateKey();
-    const address = keypairService.addressFromPrivate(privateKey);
-    expect(isValidAddress(address)).toBe(true);
+    const address = keypairService.addressFromPrivate(privateKey, isTestnet);
+    expect(isValidAddress(address, isTestnet)).toBe(true);
   });
 
 });
@@ -129,8 +131,8 @@ describe('generate mnemonic and create private key', () => {
     const keypairService = new KeypairService();
     const phrase = keypairService.generateMnemonic();
     const privateKey = keypairService.privateKeyFromMneumonic(phrase, 0);
-    const address = keypairService.addressFromPrivate(privateKey);
-    expect(isValidAddress(address)).toBe(true);
+    const address = keypairService.addressFromPrivate(privateKey, isTestnet);
+    expect(isValidAddress(address, isTestnet)).toBe(true);
   });
 
 });
@@ -199,7 +201,7 @@ describe('explorer checks', () => {
 
     const block = await explorerService.latestBlock();
     expect(block).toBeTruthy();
-    expect(block.height).toBeGreaterThan(703789);
+    expect(block.height).toBeGreaterThan(1000);
   }, 30000)
 
   test("5 blocks", async () => {

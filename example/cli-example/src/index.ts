@@ -23,6 +23,8 @@ const explorerService = new ExplorerService('https://data.rbx.network/api');
 const keypairService = new KeypairService();
 const transactionService = new TransactionService("http://68.183.17.190:7292");
 
+const isTestnet = true;
+
 
 const init = async () => {
     console.log(figlet.textSync("RBX NodeJS CLI"));
@@ -77,7 +79,7 @@ const promptForBalance = async () => {
 const generateKeypair = () => {
     const privateKey = keypairService.generatePrivateKey();
     const publicKey = keypairService.publicFromPrivate(privateKey);
-    const address = keypairService.addressFromPrivate(privateKey);
+    const address = keypairService.addressFromPrivate(privateKey, isTestnet);
 
     console.log("Keypair Generated!")
     console.log(`Private Key:\n${privateKey}\n`)
@@ -96,7 +98,7 @@ const importPrivateKey = async () => {
     const { PRIVATE_KEY } = answers;
 
 
-    const address = keypairService.addressFromPrivate(PRIVATE_KEY);
+    const address = keypairService.addressFromPrivate(PRIVATE_KEY, isTestnet);
     console.log("Address:");
     console.log(address);
 }
@@ -127,7 +129,7 @@ const sendCoin = async () => {
 
     const { PRIVATE_KEY, TO_ADDRESS, AMOUNT } = answers;
 
-    const fromAddress = keypairService.addressFromPrivate(PRIVATE_KEY)
+    const fromAddress = keypairService.addressFromPrivate(PRIVATE_KEY, isTestnet)
 
     const options: TxOptions = {
         toAddress: TO_ADDRESS,

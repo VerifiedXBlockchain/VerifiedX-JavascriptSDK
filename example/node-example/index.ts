@@ -17,6 +17,7 @@ const keypairService = new KeypairService();
 const explorerService = new ExplorerService('https://data.rbx.network/api');
 const transactionService = new TransactionService(process.env.WALLET_ADDRESS || "http://localhost:7292");
 
+const isTestnet = true;
 
 
 app.get('/', (req: Request, res: Response) => {
@@ -30,7 +31,7 @@ app.get('/generate-keypair', (_: Request, res: Response) => {
 
     const privateKey = keypairService.generatePrivateKey();
     const publicKey = keypairService.publicFromPrivate(privateKey);
-    const address = keypairService.addressFromPrivate(privateKey);
+    const address = keypairService.addressFromPrivate(privateKey, isTestnet);
 
     res.status(200).json({
         privateKey: privateKey,
@@ -43,7 +44,7 @@ app.get('/generate-keypair', (_: Request, res: Response) => {
 app.get('/import/:privateKey', (req, res) => {
 
     const privateKey = req.params.privateKey;
-    const address = keypairService.addressFromPrivate(privateKey);
+    const address = keypairService.addressFromPrivate(privateKey, isTestnet);
 
     res.status(200).json({
         address: address

@@ -49,7 +49,7 @@ export class KeypairService {
     }
 
 
-    public addressFromPrivate(privateKey: string): string {
+    public addressFromPrivate(privateKey: string, isTestNet = false): string {
 
         const curve = new EC.ec("secp256k1");
 
@@ -62,7 +62,7 @@ export class KeypairService {
         const pubKeyShaRipe = CryptoJS.RIPEMD160(pubKeySha);
 
         const preHashWNetworkData = concatArrays([
-            new Uint8Array([0x3c]),
+            new Uint8Array(isTestNet ? [0x89] : [0x3c]),
             wordArrayToByteArray(pubKeyShaRipe),
         ]);
 

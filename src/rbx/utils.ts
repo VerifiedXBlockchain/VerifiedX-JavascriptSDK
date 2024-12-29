@@ -181,10 +181,10 @@ export function isValidPrivateKey(privateKey: CryptoJS.lib.WordArray): boolean {
     return privateKeyHex < order && privateKeyHex.length === 64;
 }
 
-export function isValidAddress(address: string): boolean {
+export function isValidAddress(address: string, isTestnet = false): boolean {
     if (!address) return false;
     if (address.length != 34) return false;
-    if (address[0] !== "R") return false;
+    if (address[0] !== (isTestnet ? "x" : "R")) return false;
 
     return true;
 }
